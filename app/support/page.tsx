@@ -123,13 +123,13 @@ export default function SupportPage() {
 
             {/* Contact Channels */}
             <div className="space-y-4">
-              <Link href="mailto:support@Surfer.com">
+              <Link href="mailto:support@Signal.com">
                 <div className="flex items-center space-x-3 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors">
                   <Mail className="w-6 h-6 text-purple-400" />
                   <div>
                     <p className="font-semibold">Email Support</p>
                     <p className="text-sm text-gray-400">
-                      support@Surfer.com
+                      support@Signal.com
                     </p>
                   </div>
                 </div>

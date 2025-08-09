@@ -140,7 +140,7 @@ export const useAgentStore = create<AgentState>()(
             setError: (error) => set({ error }),
         }),
         {
-            name: 'Surfer-agent-storage',
+            name: 'Signal-agent-storage',
             partialize: (state) => ({
                 agents: state.agents,
                 selectedAgent: state.selectedAgent

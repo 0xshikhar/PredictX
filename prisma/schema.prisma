@@ -1,0 +1,174 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String   @id @default(cuid())
+  email           String?  @unique
+  walletAddress   String   @unique
+  username        String?  @unique
+  avatar          String?
+  
+  // Profile
+  bio             String?
+  joinedAt        DateTime @default(now())
+  
+  // Stats
+  totalBets       Int      @default(0)
+  totalWinnings   Decimal  @default(0)
+  winRate         Float    @default(0)
+  
+  // Relationships
+  bets            Bet[]
+  swipes          UserSwipe[]
+  preferences     UserPreferences?
+  agentWallets    AgentWallet[]
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@map("users")
+}
+
+model UserPreferences {
+  id                    String   @id @default(cuid())
+  userId                String   @unique
+  categories            String[]
+  riskTolerance         RiskTolerance @default(MEDIUM)
+  notificationsEnabled  Boolean  @default(true)
+  swipeNotifications    Boolean  @default(true)
+  resultNotifications   Boolean  @default(true)
+  
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  
+  @@map("user_preferences")
+}
+
+model Market {
+  id              String        @id @default(cuid())
+  title           String
+  description     String
+  category        String
+  imageUrl        String?
+  endDate         DateTime
+  resolutionDate  DateTime?
+  status          MarketStatus  @default(ACTIVE)
+  totalVolume     Decimal       @default(0)
+  totalBets       Int           @default(0)
+  
+  // Core blockchain specific
+  contractAddress String?
+  chainId         Int           @default(1116) // Core mainnet
+  
+  // Odds (calculated from bets)
+  yesOdds         Float         @default(50)
+  noOdds          Float         @default(50)
+  
+  // Resolution
+  outcome         Boolean?
+  resolvedAt      DateTime?
+  
+  // Relationships
+  bets            Bet[]
+  userSwipes      UserSwipe[]
+  
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  
+  @@map("markets")
+}
+
+model Bet {
+  id              String    @id @default(cuid())
+  userId          String
+  marketId        String
+  amount          Decimal
+  position        Boolean   // true = YES, false = NO
+  odds            Float
+  potential       Decimal
+  status          BetStatus @default(ACTIVE)
+  
+  // Blockchain
+  txHash          String?
+  blockNumber     BigInt?
+  
+  // Relationships
+  market          Market    @relation(fields: [marketId], references: [id], onDelete: Cascade)
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  
+  @@map("bets")
+}
+
+model UserSwipe {
+  id              String         @id @default(cuid())
+  userId          String
+  marketId        String
+  direction       SwipeDirection
+  
+  // Relationships
+  market          Market         @relation(fields: [marketId], references: [id], onDelete: Cascade)
+  user            User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  createdAt       DateTime       @default(now())
+  
+  @@unique([userId, marketId])
+  @@map("user_swipes")
+}
+
+// Keep existing AgentWallet model for compatibility
+model AgentWallet {
+  id                String   @id @default(cuid())
+  userWalletAddress String
+  agentWalletId     String   @unique
+  privateKeyHash    String
+  
+  user              User     @relation(fields: [userWalletAddress], references: [walletAddress], onDelete: Cascade)
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  @@unique([userWalletAddress, agentWalletId])
+  @@map("agent_wallets")
+}
+
+// Enums
+enum MarketStatus {
+  ACTIVE
+  PAUSED
+  CLOSED
+  RESOLVED
+}
+
+enum BetStatus {
+  ACTIVE
+  WON
+  LOST
+  CANCELLED
+}
+
+enum SwipeDirection {
+  LEFT    // Pass/Not Interested
+  RIGHT   // Interested/Add to Watchlist
+  UP      // Want to bet YES
+  DOWN    // Want to bet NO
+}
+
+enum RiskTolerance {
+  LOW
+  MEDIUM
+  HIGH
+}

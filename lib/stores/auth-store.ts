@@ -34,7 +34,7 @@ export const useAuthStore = create<AuthState>()(
       logout: () => set({ user: null, isAuthenticated: false }),
     }),
     {
-      name: 'Surfer-auth-storage',
+      name: 'Signal-auth-storage',
       partialize: (state) => ({ 
         user: state.user, 
         isAuthenticated: state.isAuthenticated 

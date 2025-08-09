@@ -36,7 +36,7 @@ export default function ClientLayout({
   return (
     <Provider>
       {/* Layout with Sidebar */}
-      <div className="flex h-screen overflow-hidden bg-gray-50">
+      <div className="flex h-screen overflow-hidden bg-background">
         {/* Sidebar - positioned with proper z-index */}
         <div className="z-30 lg:z-auto">
           <Sidebar isOpen={sidebarOpen} onClose={closeSidebar} />
@@ -56,7 +56,7 @@ export default function ClientLayout({
           <Header toggleSidebar={toggleSidebar} />
 
           {/* Main Content with proper padding for fixed elements */}
-          <main className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 bg-gray-50 pb-20 lg:pb-6">
+          <main className="flex-1 overflow-y-auto p-3 sm:p-4 md:p-6 bg-background pb-20 lg:pb-6">
             {/* Content container with max width and proper spacing */}
             <div className="max-w-7xl mx-auto w-full">{children}</div>
           </main>

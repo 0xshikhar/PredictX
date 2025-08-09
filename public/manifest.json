@@ -1,6 +1,6 @@
 {
-  "name": "Surfer Dashboard",
-  "short_name": "Surfer",
+  "name": "Signal Dashboard",
+  "short_name": "Signal",
   "description": "Advanced financial analytics platform for modern investors",
   "start_url": "/",
   "display": "standalone",

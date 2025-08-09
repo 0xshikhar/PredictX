@@ -54,9 +54,9 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar }) => {
           className="text-xl font-semibold text-gray-900 block md:hidden"
         >
           <div className="flex items-center">
-            <Image src="/logo.png" alt="Surfer" width={32} height={32} />
+            <Image src="/logo.png" alt="Signal" width={32} height={32} />
             <div className="flex items-center ml-2">
-              <span className="text-gray-900">Surfer</span>
+              <span className="text-gray-900">Signal</span>
             </div>
           </div>
         </Link>

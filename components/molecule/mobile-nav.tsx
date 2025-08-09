@@ -3,10 +3,10 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import {
-    Home,
+    TrendingUp,
     BarChart3,
-    Bot,
-    Briefcase,
+    Wallet,
+    Trophy,
     Settings
 } from 'lucide-react';
 
@@ -22,29 +22,24 @@ const MobileNav = () => {
 
     const navItems = [
         {
-            label: 'Home',
-            href: '/',
-            icon: Home,
+            label: 'Predictions',
+            href: '/predictions',
+            icon: TrendingUp,
+        },
+        {
+            label: 'Markets',
+            href: '/markets',
+            icon: BarChart3,
         },
         {
             label: 'Portfolio',
             href: '/portfolio',
-            icon: Briefcase,
+            icon: Wallet,
         },
         {
-            label: 'Research',
-            href: '/research',
-            icon: BarChart3,
-        },
-        {
-            label: 'Agent',
-            href: '/agent',
-            icon: Bot,
-        },
-        {
-            label: 'Settings',
-            href: '/settings',
-            icon: Settings,
+            label: 'Leaderboard',
+            href: '/leaderboard',
+            icon: Trophy,
         },
     ];
 

@@ -22,7 +22,7 @@ export default function HomePage() {
       <div className="flex items-center justify-center min-h-screen bg-gray-50">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading Surfer...</p>
+          <p className="text-gray-600">Loading Signal...</p>
         </div>
       </div>
     );
@@ -35,7 +35,7 @@ export default function HomePage() {
         <div className="clean-container">
           <div className="text-center space-y-6">
             <h1 className="text-display text-gray-900">
-              Welcome to <span className="text-blue-600">Surfer</span>
+              Welcome to <span className="text-blue-600">Signal</span>
             </h1>
             <p className="text-subheading text-gray-700 max-w-3xl mx-auto">
               Advanced DeFi analytics platform for modern investors. Get insights, manage portfolios, and make informed decisions.
@@ -188,7 +188,7 @@ export default function HomePage() {
             <div className="clean-card max-w-2xl mx-auto p-12 text-center">
               <h2 className="text-heading text-gray-900 mb-4">Ready to Get Started?</h2>
               <p className="text-body text-gray-600 mb-8">
-                Join thousands of investors who trust Surfer for their DeFi analytics and portfolio management needs.
+                Join thousands of investors who trust Signal for their DeFi analytics and portfolio management needs.
               </p>
               <Link 
                 href="/agent/chat"

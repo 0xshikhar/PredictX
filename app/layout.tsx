@@ -3,8 +3,8 @@ import "./globals.css";
 import ClientLayout from "./client-layout";
 
 export const metadata: Metadata = {
-  title: "Surfer Dashboard",
-  description: "Advanced financial analytics platform for modern investors",
+  title: "Predict Core - Prediction Marketplace",
+  description: "Professional prediction marketplace on Core blockchain. Make predictions, earn rewards, and compete with the community.",
   manifest: "/manifest.json",
   icons: {
     icon: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     ],
   },
   viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
-  themeColor: "#3b82f6",
+  themeColor: "#A4FF31",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-gray-50 text-gray-900 min-h-screen">
+      <body className="bg-background text-foreground min-h-screen antialiased">
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

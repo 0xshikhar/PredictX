@@ -5,47 +5,57 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222 84% 4.9%;
+    --foreground: 0 0% 9%;
     --card: 0 0% 100%;
-    --card-foreground: 222 84% 4.9%;
+    --card-foreground: 0 0% 9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 84% 4.9%;
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 56%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 84% 4.9%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 79 100% 59%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 79 100% 97%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 79 100% 92%;
+    --accent-foreground: 0 0% 9%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 221 83% 53%;
-    --radius: 0.5rem;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 91%;
+    --input: 0 0% 91%;
+    --ring: 79 100% 59%;
+    --radius: 0.75rem;
+    --chart-1: 79 100% 59%;
+    --chart-2: 79 90% 65%;
+    --chart-3: 79 80% 70%;
+    --chart-4: 79 70% 75%;
+    --chart-5: 79 60% 80%;
   }
 
   .dark {
-    --background: 222 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 84% 4.9%;
-    --secondary: 217 32% 17%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 32% 17%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 32% 17%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 32% 17%;
-    --input: 217 32% 17%;
-    --ring: 212.7 26.8% 83.9%;
+    --background: 0 0% 3%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 79 100% 59%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 79 100% 59%;
+    --chart-1: 79 100% 59%;
+    --chart-2: 79 90% 65%;
+    --chart-3: 79 80% 70%;
+    --chart-4: 79 70% 75%;
+    --chart-5: 79 60% 80%;
   }
 }
 
@@ -64,25 +74,68 @@
   }
 }
 
-/* Clean, minimal design system */
-.clean-card {
-  @apply bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200;
+/* Prediction Market Design System */
+.prediction-card {
+  @apply bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300;
 }
 
-.clean-card-hover {
-  @apply hover:shadow-lg hover:border-gray-200 transform hover:-translate-y-1;
+.prediction-card-hover {
+  @apply hover:shadow-xl hover:border-primary/20 transform hover:-translate-y-2 hover:scale-[1.02];
 }
 
-.clean-button {
-  @apply bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200;
+.prediction-button {
+  @apply bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 rounded-xl;
 }
 
-.clean-button-primary {
-  @apply bg-blue-600 text-white border-blue-600 hover:bg-blue-700 hover:border-blue-700;
+.prediction-button-primary {
+  @apply bg-primary text-primary-foreground border-primary hover:bg-primary/90 hover:border-primary/90 shadow-lg hover:shadow-xl;
 }
 
-.clean-input {
-  @apply bg-white border border-gray-200 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20;
+.prediction-button-secondary {
+  @apply bg-secondary text-secondary-foreground border-secondary hover:bg-secondary/80 hover:border-secondary/80;
+}
+
+.prediction-input {
+  @apply bg-white border border-gray-200 text-gray-900 placeholder-gray-500 focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl;
+}
+
+/* Swipe Interface Styles */
+.swipe-card {
+  @apply relative bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden;
+}
+
+.swipe-card-stack {
+  @apply relative w-full h-full;
+}
+
+.swipe-indicator-yes {
+  @apply absolute top-8 right-8 bg-primary text-primary-foreground px-6 py-3 rounded-2xl font-bold text-lg transform rotate-12 opacity-0 transition-opacity duration-200;
+}
+
+.swipe-indicator-no {
+  @apply absolute top-8 left-8 bg-destructive text-destructive-foreground px-6 py-3 rounded-2xl font-bold text-lg transform -rotate-12 opacity-0 transition-opacity duration-200;
+}
+
+/* Prediction Market Status */
+.market-status-active {
+  @apply bg-primary/10 text-primary border border-primary/20;
+}
+
+.market-status-closed {
+  @apply bg-gray-100 text-gray-600 border border-gray-200;
+}
+
+.market-status-resolved {
+  @apply bg-blue-50 text-blue-700 border border-blue-200;
+}
+
+/* Odds Display */
+.odds-positive {
+  @apply text-primary font-semibold;
+}
+
+.odds-negative {
+  @apply text-destructive font-semibold;
 }
 
 /* Modern scrollbar */

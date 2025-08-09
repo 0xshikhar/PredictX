@@ -172,7 +172,7 @@ export const useResearchStore = create<ResearchState>()(
       setError: (error) => set({ error }),
     }),
     {
-      name: 'Surfer-research-storage',
+      name: 'Signal-research-storage',
       partialize: (state) => ({
         favoriteProtocols: state.favoriteProtocols,
         filters: state.filters,

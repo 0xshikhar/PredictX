@@ -224,7 +224,7 @@ const AgentChatPage = () => {
     {
       id: "1",
       content:
-        "Hello! I'm your Surfer AI Portfolio Assistant. I can help with research, portfolio optimization, risk management, and automation strategies. How can I assist you today?",
+        "Hello! I'm your Signal AI Portfolio Assistant. I can help with research, portfolio optimization, risk management, and automation strategies. How can I assist you today?",
       sender: "agent",
       timestamp: new Date(),
     },

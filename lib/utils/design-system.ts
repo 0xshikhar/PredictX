@@ -1,5 +1,5 @@
 /**
- * Surfer Design System
+ * Signal Design System
  *
  * This file contains standardized design tokens and utility functions
  * to maintain a consistent, premium appearance across the application.

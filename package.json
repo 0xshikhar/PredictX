@@ -9,7 +9,23 @@
     "lint": "next lint",
     "prisma:generate": "bun prisma generate",
     "prisma:studio": "bun prisma studio",
-    "prisma:seed": "bun prismadb seed"
+    "prisma:seed": "bun prisma db seed",
+    "db:setup": "node scripts/setup-database.js",
+    "db:reset": "npx prisma migrate reset --force",
+    "db:deploy": "npx prisma migrate deploy",
+    "deploy:testnet": "npx hardhat run scripts/deploy.js --network core_testnet",
+    "deploy:mainnet": "npx hardhat run scripts/deploy.js --network core_mainnet",
+    "create:markets": "npx hardhat run scripts/create-sample-markets.js",
+    "test:blockchain": "npx hardhat run scripts/test-blockchain.js",
+    "test:api": "npm run test -- __tests__/api",
+    "test:components": "npm run test -- __tests__/components",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "setup": "node scripts/full-setup.js",
+    "setup:dev": "npm run db:setup && npm run deploy:testnet && npm run create:markets",
+    "setup:prod": "NODE_ENV=production node scripts/full-setup.js",
+    "verify:production": "npx hardhat run scripts/verify-production.js --network core_mainnet",
+    "verify:testnet": "npx hardhat run scripts/verify-production.js --network core_testnet"
   },
   "dependencies": {
     "@ai-sdk/openai": "^1.2.1",
@@ -61,6 +77,16 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/jest": "^29.5.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^6.1.0",
+    "@testing-library/user-event": "^14.5.0",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "hardhat": "^2.19.0",
+    "hardhat-deploy": "^0.11.45",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "dotenv": "^17.2.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.15",
@@ -68,5 +94,8 @@
     "tailwindcss": "^3.4.1",
     "tsx": "^4.20.3",
     "typescript": "^5"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   }
 }

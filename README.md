@@ -1,4 +1,4 @@
-# 🎯 Predict Core - Professional Prediction Marketplace
+# 🎯 Predict Core 
 
 A mobile-first prediction marketplace built on Core blockchain with a clean, professional design. Users can swipe through prediction markets, place bets, and compete with the community.
 
